@@ -2,7 +2,7 @@ const transactionUl = document.querySelector('#transactions');
 const inputTransactionName = document.querySelector('#text');
 const inputTransactionAmount = document.querySelector('#amount');
 
-const dummyTransactions =[
+let dummyTransactions =[
     {id: 1, name: 'Bolo de brigadeiro', amount: -20},            //array
     {id: 2, name: 'Salario', amount: 300},
     {id: 3, name: 'Torta de frango', amount: 30},
@@ -11,7 +11,7 @@ const dummyTransactions =[
 
 const addTransactionInArray = (transactionName,transactionAmount) => {
     dummyTransactions.push({
-        id:123,
+        id:123, // esta fixo porque ainda nao tem um gerador de id
         name: transactionName,
         amount: transactionAmount
     })
@@ -26,7 +26,7 @@ const handleFormSubmit = event =>{
         return;
     }
 
-    addTransactionInArray(inputTransactionName, inputTransactionAmount);
+    addTransactionInArray(inputTransactionName.value, inputTransactionAmount.value);
 
     init();
 }
@@ -43,6 +43,8 @@ const addTransactionIntoDOM = transaction =>{
 }
 
 const init = () => {
+    // tratamento a nivel de codigo para nao submeter toda a lista novamente
+    transactionUl.innerHTML = ''; // para adicionar somento um elemento
     dummyTransactions.forEach(addTransactionIntoDOM);
 }
 
