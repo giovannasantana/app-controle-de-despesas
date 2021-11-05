@@ -1,6 +1,10 @@
 const transactionUl = document.querySelector('#transactions');
 const inputTransactionName = document.querySelector('#text');
 const inputTransactionAmount = document.querySelector('#amount');
+const balanceDisplay = document.querySelector('#balance');
+const incomeDisplay = document.querySelector('#money-plus');
+const expenseDisplay = document.querySelector('#money-minus');
+
 
 let dummyTransactions =[
     {id: 1, name: 'Bolo de brigadeiro', amount: -20},            //array
@@ -59,9 +63,13 @@ const updateBalanceValues = () => {
     console.log('Somente os valores positivos: ' + income);
 
     //somente as desesas
-    const expense = transationsAmounts.filter(value => value < 0)
+    const expenses = transationsAmounts.filter(value => value < 0)
                                     .reduce((accumulator, transaction) => accumulator + transaction, 0);
-    console.log('Somente os valores negativos: ' + expense)
+    console.log('Somente os valores negativos: ' + expenses)
+
+    balanceDisplay.textContent = `R$ ${total}`;
+    incomeDisplay.textContent = `R$ ${income}`;
+    expenseDisplay.textContent = `R$ ${expenses}`;
 }
 
 
