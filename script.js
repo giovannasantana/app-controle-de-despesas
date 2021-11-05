@@ -11,7 +11,7 @@ const dummyTransactions =[
 
 const handleFormSubmit = event =>{
     
-    if(inputTransactionName.value.trim() === '' || 
+    if(inputTransactionName.value.trim() === '' && 
             inputTransactionAmount.value.trim() === ''){
         alert('Informe a descrição e o valor da transação');
     }
@@ -19,6 +19,7 @@ const handleFormSubmit = event =>{
 
 form.addEventListener('submit', handleFormSubmit);
 
+                        // é o parametro da funcao
 const addTransactionIntoDOM = transaction =>{
     const li = document.createElement('li')
 
@@ -31,4 +32,5 @@ const init = () => {
     dummyTransactions.forEach(addTransactionIntoDOM);
 }
 
+// funcao de inicializacao do js
 init();
