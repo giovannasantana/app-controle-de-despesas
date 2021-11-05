@@ -38,13 +38,22 @@ const handleFormSubmit = event =>{
     init();
 }
 
+const removeTransaction = ID => {
+    dummyTransactions = dummyTransactions.filter(transaction => transaction.id !== ID);
+    console.log(dummyTransactions);
+}
+
+
 form.addEventListener('submit', handleFormSubmit);
 
                         // é o parametro da funcao
 const addTransactionIntoDOM = transaction =>{
     const li = document.createElement('li')
 
-    li.innerHTML = `${transaction.name} ${transaction.amount}`
+    li.innerHTML = `
+        ${transaction.name}
+        <span> R$ ${transaction.amount} </span> 
+        <button onClick="removeTransaction(${transaction.id})">X</button>`
     //atribuindo um nó para o li
     transactionUl.append(li);
 }
@@ -74,7 +83,6 @@ const updateBalanceValues = () => {
     incomeDisplay.textContent = `R$ ${income}`;
     expenseDisplay.textContent = `R$ ${expenses}`;
 }
-
 
 
 
