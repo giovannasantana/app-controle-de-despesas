@@ -9,12 +9,26 @@ const dummyTransactions =[
     {id: 4, name: 'Violao', amount: -500}
 ]
 
+const addTransactionInArray = (transactionName,transactionAmount) => {
+    dummyTransactions.push({
+        id:123,
+        name: transactionName,
+        amount: transactionAmount
+    })
+}
+
 const handleFormSubmit = event =>{
-    
-    if(inputTransactionName.value.trim() === '' && 
-            inputTransactionAmount.value.trim() === ''){
+    event.preventDefault(); //para permanecer na mesma pagina, sem direcionar para tela de listagem
+
+    if(inputTransactionName.value.trim() === '' || 
+        inputTransactionAmount.value.trim() === ''){
         alert('Informe a descrição e o valor da transação');
+        return;
     }
+
+    addTransactionInArray(inputTransactionName, inputTransactionAmount);
+
+    init();
 }
 
 form.addEventListener('submit', handleFormSubmit);
