@@ -49,11 +49,15 @@ form.addEventListener('submit', handleFormSubmit);
                         // é o parametro da funcao
 const addTransactionIntoDOM = transaction =>{
     const li = document.createElement('li')
+    // condicao na linha if ternário
+    const operator = transaction.amount < 0 ? '-' : '+';
+    const amountWithoutOperator = Math.abs(transaction.amount);
+    const CssClass = transaction.amount < 0 ? 'minus' : 'plus';
 
     li.innerHTML = `
         ${transaction.name}
-        <span> R$ ${transaction.amount} </span> 
-        <button onClick="removeTransaction(${transaction.id})">X</button>`
+        <span> ${operator} R$ ${amountWithoutOperator} </span> 
+        <button class="delete-btn" onClick="removeTransaction(${transaction.id})">X</button>`
     //atribuindo um nó para o li
     transactionUl.append(li);
 }
