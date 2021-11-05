@@ -18,7 +18,7 @@ const geradorID = () => Math.round(Math.random * 1000);
 
 const addTransactionInArray = (transactionName,transactionAmount) => {
     dummyTransactions.push({
-        id: geradorID, 
+        id: geradorID(), 
         name: transactionName,
         amount: Number(transactionAmount)
     })
