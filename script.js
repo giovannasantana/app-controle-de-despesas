@@ -13,11 +13,14 @@ let dummyTransactions =[
     {id: 4, name: 'Violao', amount: -500}
 ]
 
+// gerador de id aleatorio
+const geradorID = () => Math.round(Math.random * 1000);
+
 const addTransactionInArray = (transactionName,transactionAmount) => {
     dummyTransactions.push({
-        id:123, // esta fixo porque ainda nao tem um gerador de id
+        id: geradorID, 
         name: transactionName,
-        amount: transactionAmount
+        amount: Number(transactionAmount)
     })
 }
 
@@ -30,7 +33,7 @@ const handleFormSubmit = event =>{
         return;
     }
 
-    addTransactionInArray(inputTransactionName.value, inputTransactionAmount.value);
+    addTransactionInArray(inputTransactionName.value, inputTransactionAmount.value)
 
     init();
 }
@@ -41,7 +44,7 @@ form.addEventListener('submit', handleFormSubmit);
 const addTransactionIntoDOM = transaction =>{
     const li = document.createElement('li')
 
-    li.innerHTML = `${transaction.name}`
+    li.innerHTML = `${transaction.name} ${transaction.amount}`
     //atribuindo um nó para o li
     transactionUl.append(li);
 }
