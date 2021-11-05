@@ -33,14 +33,14 @@ const handleFormSubmit = event =>{
         return;
     }
 
-    addTransactionInArray(inputTransactionName.value, inputTransactionAmount.value)
-
+    addTransactionInArray(inputTransactionName.value, inputTransactionAmount.value);
     init();
 }
 
 const removeTransaction = ID => {
     dummyTransactions = dummyTransactions.filter(transaction => transaction.id !== ID);
     console.log(dummyTransactions);
+    init();
 }
 
 
