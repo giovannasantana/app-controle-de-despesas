@@ -50,9 +50,18 @@ const updateBalanceValues = () => {
     console.log('Soma dos valores: ' + transationsAmounts); 
 
     //totalizador
-    const total = transationsAmounts.reduce((accumulator, transaction) => accumulator + transaction, 0)
-
+    const total = transationsAmounts.reduce((accumulator, transaction) => accumulator + transaction, 0);
     console.log('Soma dos valores: ' + total)
+
+    //somente as receitaas
+    const income = transationsAmounts.filter(value => value > 0)
+                                    .reduce((accumulator, transaction) => accumulator + transaction, 0);
+    console.log('Somente os valores positivos: ' + income);
+
+    //somente as desesas
+    const expense = transationsAmounts.filter(value => value < 0)
+                                    .reduce((accumulator, transaction) => accumulator + transaction, 0);
+    console.log('Somente os valores negativos: ' + expense)
 }
 
 
