@@ -42,10 +42,27 @@ const addTransactionIntoDOM = transaction =>{
     transactionUl.append(li);
 }
 
+// metodo que ira separar os valores de total, receitas e despesas
+const updateBalanceValues = () => {
+
+    //pega todos os valores de cada linha do array
+    const transationsAmounts = dummyTransactions.map(({amount}) => amount)
+    console.log('Soma dos valores: ' + transationsAmounts); 
+
+    //totalizador
+    const total = transationsAmounts.reduce((accumulator, transaction) => accumulator + transaction, 0)
+
+    console.log('Soma dos valores: ' + total)
+}
+
+
+
+
 const init = () => {
     // tratamento a nivel de codigo para nao submeter toda a lista novamente
     transactionUl.innerHTML = ''; // para adicionar somento um elemento
     dummyTransactions.forEach(addTransactionIntoDOM);
+    updateBalanceValues();
 }
 
 // funcao de inicializacao do js
